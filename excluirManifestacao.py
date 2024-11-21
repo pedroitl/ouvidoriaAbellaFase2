@@ -1,7 +1,7 @@
-def removerpelocodig(conexao):
+def excluirManifestacao(conexao):
     codigoremover = int(input('Digite o codigo para remover' ))
 
-    consultarremover = 'Delete from manifestaçoes where cogigo = %s'
+    consultarRemover = 'delete from manifestaçoes where cogigo = %s'
     valores = [codigoremover]
     linhasafetadas = excluirBancoDados(conexao,calsutaRemover,valores)
 
