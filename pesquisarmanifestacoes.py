@@ -1,4 +1,4 @@
-def pesquisarporcodigo(conexao):
+def pesquisarmanifestacoes(conexao):
     codigopesquisar = int(input("digite o codigo: "))
     consultapesquisar = "select * from manifestacoes where codigo = %s"
     valores = [codigopesquisar]
