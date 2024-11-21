@@ -1,11 +1,11 @@
 def excluirManifestacao(conexao):
-    codigoremover = int(input('Digite o codigo para remover' ))
 
-    consultarRemover = 'delete from manifestaçoes where cogigo = %s'
+    codigoremover = int(input('Digite o codigo para remover: ' ))
+    consultaRemover = 'delete from manifestaçoes where cogigo = %s'
     valores = [codigoremover]
-    linhasafetadas = excluirBancoDados(conexao,calsutaRemover,valores)
+    linhasAfetadas = excluirBancoDados(conexao,calsutaRemover,valores)
 
-    if linhasafetadas > 0:
+    if linhasAfetadas > 0:
         print('manifestação removida com sucesso' )
 
     else:

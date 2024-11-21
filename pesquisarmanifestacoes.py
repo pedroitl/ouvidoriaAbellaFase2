@@ -6,4 +6,4 @@ def pesquisarManifestacoes(conexao):
     if len(manifestacoes) > 0:
         print(manifestacoes[0][1], "-", manifestacoes[0][2], "-", manifestacoes[0][3])
     else:
-        print("atualmente nao temos manifestacoes nessa posicao!")
+        print("Atualmente nao temos manifestacoes nessa posicao!")
