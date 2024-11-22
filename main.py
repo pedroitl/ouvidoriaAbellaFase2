@@ -71,7 +71,7 @@ def pesquisarManifestacoes(conexao):
     else:
         print("Atualmente não temos manifestaçoes nessa posiçao!")
 
-def excluirManifestacao(conexao):
+def excluirManifestacoes(conexao):
     codigoRemover = int(input('Digite o codigo da manifestaçao que deseja remover: '))
     consultaRemover = 'delete from manifestaçoes where cogigo = %s'
     valores = [codigoRemover]
