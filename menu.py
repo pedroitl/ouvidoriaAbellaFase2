@@ -1,6 +1,6 @@
 from main import *
 
-conexao = criarConexao('127.0.0.1', 'root', 'root', 'ouvidoria_projeto_abella')
+conexao = criarConexao('127.0.0.1', 'root', '12345', 'ouvidoria_projeto_abella')
 
 opcao = 1
 
@@ -31,7 +31,7 @@ while opcao != 7:
     elif opcao != 7:
         print('Opção Inválida!')
     else:
-        print('Saindo...\n')
+        print('...')
 
 encerrarConexao(conexao)
 print('Sistema finalizado! Obrigado por utilizar nossos serviços.')

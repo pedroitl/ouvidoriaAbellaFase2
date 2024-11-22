@@ -1,6 +1,6 @@
 from operacoesbd import *
 
-conexao = criarConexao('127.0.0.1', 'root', 'root', 'ouvidoria_projeto_abella')
+conexao = criarConexao('127.0.0.1', 'root', '12345', 'ouvidoria_projeto_abella')
 
 def listarManifestacoes(conexao):
     lista = listarBancoDados(conexao, "select * from manifestacoes")
@@ -15,7 +15,7 @@ def listarManifestacoes(conexao):
 def listarManifestacoesPorTipo(conexao):
 
     categoria = input("Digite o tipo de manifestacao a ser cadastrada: ")
-    consultaListarPorTipo = "select * from manifestacoes where tipo = %s"
+    consultaListarPorTipo = "select * from manifestacoes where categoria = %s"
     tipo = [categoria]
 
     lista = listarBancoDados(conexao, consultaListarPorTipo, tipo)
@@ -29,7 +29,7 @@ def listarManifestacoesPorTipo(conexao):
 
 def criarManifestacoes(conexao):
     print('Criar Manifestação')
-    nome = input('Digite seu nome: ')
+    autor = input('Digite seu nome: ')
 
     while True:
         categoria = int(input('\n1) Reclamaçoes''\n2) Sugestoes''\n3) Elogios\n'
@@ -46,14 +46,14 @@ def criarManifestacoes(conexao):
         else:
             print('Opçao invalida! Tente novamente.')
 
-    manifestacao = input('Digite sua manifestaçao: ')
+    descricao = input('Digite sua manifestaçao: ')
 
-    consultaInserir = 'insert into manifestacoes (nome,tipoManifestacao,manifestacao) values (%s,%s,%s)'
-    valores = [nome, categoria, manifestacao]
+    consultaInserir = 'insert into manifestacoes (descricao, categoria, autor) values (%s,%s,%s)'
+    valores = [descricao, categoria, autor]
 
     insertNoBancoDados(conexao,consultaInserir,valores)
 
-    print('Filme inserido com sucesso!')
+    print('Manifestacao inserida com sucesso!')
 
 def quantidadeManifestacoes(conexao):
     consultarQuantidade = "select count(*) from manifestacoes"
@@ -73,12 +73,12 @@ def pesquisarManifestacoes(conexao):
 
 def excluirManifestacoes(conexao):
     codigoRemover = int(input('Digite o codigo da manifestaçao que deseja remover: '))
-    consultaRemover = 'delete from manifestaçoes where cogigo = %s'
+    consultaRemover = 'delete from manifestacoes where codigo = %s'
     valores = [codigoRemover]
     linhasAfetadas = excluirBancoDados(conexao, consultaRemover, valores)
 
     if linhasAfetadas > 0:
-        print('manifestação removida com sucesso')
+        print('Manifestação removida com sucesso')
 
     else:
         print('Não existe manifestações para o codigo informado ')
