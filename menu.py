@@ -21,7 +21,7 @@ while opcao != 7:
     elif opcao == 2:
         listarManifestacoesPorTipo(conexao)
     elif opcao == 3:
-        criarManifestacao(conexao)
+        criarManifestacoes(conexao)
     elif opcao == 4:
         quantidadeManifestacoes(conexao)
     elif opcao == 5:
