@@ -2,22 +2,58 @@ from operacoesbd import *
 
 conexao = criarConexao('127.0.0.1', 'root', 'root', 'ouvidoria_projeto_abella')
 
-#listar normal
+def listarManifestacoes(conexao):
+    lista = listarBancoDados(conexao, "select * from manifestacoes")
+
+    if len(lista) > 0:
+            print("Lista de manifestacoes:")
+            for item in lista:
+                print(item[0], "-", item[1], "-", item[2], "-", item[3])
+    else:
+            print("Nao existem manifestacoes cadastradas!")
 
 def listarManifestacoesPorTipo(conexao):
 
-    tipomanifestacao = input("Digite o tipo de manifestacao a ser cadastrada: ")
-    consultalistagemtipo = "select * from manifestacoes where tipo = %s"
-    tipo = [tipomanifestacao]
-    lista = listarBancoDados(conexao, consultalistagemtipo, tipo)
+    categoria = input("Digite o tipo de manifestacao a ser cadastrada: ")
+    consultaListarPorTipo = "select * from manifestacoes where tipo = %s"
+    tipo = [categoria]
+
+    lista = listarBancoDados(conexao, consultaListarPorTipo, tipo)
+
     if len(lista) > 0:
-        print("Essas sao todas manifestacoes que temos nesse tipo:")
+        print("Essas sao todas as manifestacoes que temos nesse tipo:")
         for item in lista:
             print(item[0], "-", item[1], "-", item[2], "-", item[3])
     else:
         print("Nao temos nenhuma manifestacao nesse tipo!")
 
-#criar
+def criarManifestacoes(conexao):
+    print('Criar Manifestação')
+    nome = input('Digite seu nome: ')
+
+    while True:
+        categoria = int(input('\n1) Reclamaçoes''\n2) Sugestoes''\n3) Elogios\n'
+        '\nDigite a opçao com o tipo de manifestaçao : '))
+        if categoria == 1:
+            categoria = 'Reclamaçao'
+            break
+        elif categoria == 2:
+            categoria = 'Sugestao'
+            break
+        elif categoria == 3:
+            categoria = 'Elogio'
+            break
+        else:
+            print('Opçao invalida! Tente novamente.')
+
+    manifestacao = input('Digite sua manifestaçao: ')
+
+    consultaInserir = 'insert into manifestacoes (nome,tipoManifestacao,manifestacao) values (%s,%s,%s)'
+    valores = [nome, categoria, manifestacao]
+
+    insertNoBancoDados(conexao,consultaInserir,valores)
+
+    print('Filme inserido com sucesso!')
 
 def quantidadeManifestacoes(conexao):
     consultarQuantidade = "select count(*) from manifestacoes"
