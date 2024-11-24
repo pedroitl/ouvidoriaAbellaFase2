@@ -1,6 +1,6 @@
 from main import *
 
-conexao = criarConexao('127.0.0.1', 'root', '12345', 'ouvidoria_projeto_abella')
+conexao = criarConexao('127.0.0.1', 'root', 'root', 'ouvidoria_projeto_abella')
 
 opcao = 1
 

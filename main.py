@@ -14,7 +14,7 @@ def listarManifestacoes(conexao):
 
 def listarManifestacoesPorTipo(conexao):
 
-    categoria = input("Digite o tipo de manifestacao a ser cadastrada: ")
+    categoria = input("Digite o tipo de manifestacao a ser pesquisada: ")
     consultaListarPorTipo = "select * from manifestacoes where categoria = %s"
     tipo = [categoria]
 
