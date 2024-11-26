@@ -24,4 +24,4 @@ def criarManifestacoes(conexao):
 
     insertNoBancoDados(conexao,consultaInserir,valores)
 
-    print('Filme inserido com sucesso!')
+    print('Manifestacao inserida com sucesso!')
